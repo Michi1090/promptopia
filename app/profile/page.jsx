@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
-import Profile from "@components/profile";
+import Profile from "@components/Profile";
 
 const MyProfile = () => {
   const router = useRouter();
@@ -23,6 +23,7 @@ const MyProfile = () => {
   }, []);
 
   const handleEdit = (post) => {
+    console.log(post);
     router.push(`/update-prompt?id=${post._id}`);
   };
 
