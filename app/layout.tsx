@@ -1,4 +1,5 @@
 import "@styles/globals.css";
+import { FC, ReactNode } from "react";
 
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
@@ -8,7 +9,11 @@ export const metadata = {
   description: "Discover & Share AI prompts",
 };
 
-const RootLayout = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+const RootLayout: FC<Props> = ({ children }) => {
   return (
     <html lang="en">
       <body>
