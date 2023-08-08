@@ -2,13 +2,26 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { useState, useEffect, FC } from "react";
+import {
+  signIn,
+  signOut,
+  useSession,
+  getProviders,
+  LiteralUnion,
+  ClientSafeProvider,
+} from "next-auth/react";
+import { BuiltInProviderType } from "next-auth/providers";
 
-const Nav = () => {
+type ProviderType = Record<
+  LiteralUnion<BuiltInProviderType>,
+  ClientSafeProvider
+>;
+
+const Nav: FC = () => {
   const { data: session } = useSession();
 
-  const [providers, setProviders] = useState(null);
+  const [providers, setProviders] = useState<ProviderType>(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
   useEffect(() => {
